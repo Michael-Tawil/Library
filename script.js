@@ -1,6 +1,7 @@
 let myLibrary = [];
 bookcont = document.getElementById("bookcont");
 
+
 function Book(title,author,pages,read){
     this.title = title
     this.author = author
@@ -19,20 +20,34 @@ function addBookToLibrary(title,author,pages,read) {
 function shwbook(){
     myLibrary.forEach(book =>{
         let bookbtn = document.createElement("button");
-        bookbtn.innerHTML="Read";
-        bookbtn.classList.add("nnewbook");
+        bookbtn.innerHTML=`${book.read}`;
+        bookbtn.classList.add("nnewbook","yesno");
         let bookcard = document.createElement("div");
         bookcard.classList.add("card");
-        bookcard.innerHTML = `${book.title}`;
+        let bookcardh = document.createElement("h1");
+        bookcardh.innerText=`${book.title}`;
+        let bookcarddesc = document.createElement("p");
+        bookcarddesc.innerText=`${book.author} \n ${book.pages}`;
+
+        if(book.read === "read"){
+            bookbtn.style.background = "#50C878";
+        }
+        else{
+            bookbtn.style.background = "#ED2939";
+        }
+
         bookcont.appendChild(bookcard);
+        bookcard.appendChild(bookcardh);
+        bookcard.appendChild(bookcarddesc);
         bookcard.appendChild(bookbtn);
     })
 }
 
-thehob = addBookToLibrary("The Albion","jjr",30," not read");
-thehob = addBookToLibrary("The Art ","jjr",30," not read");
-thehob = addBookToLibrary("The Knowing and the Unknown","jjr",30," not read");
-thehob = addBookToLibrary("The Little Big","jjr",30," not read");
+
+theh1ob = addBookToLibrary("The Albion","DR.T",300,"read");
+theh2ob = addBookToLibrary("The Art ","JOHN David",500,"not read");
+theho3b = addBookToLibrary("The Knowing and the Unknown","Steve Jobson",355,"not read");
+theho4b = addBookToLibrary("The Little Big","LIL Iceicle",670,"read");
 
 shwbook();
 console.log(myLibrary);

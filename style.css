@@ -1,0 +1,49 @@
+#Logo-img{
+    width: 50px;
+    height: 50px;
+}
+body{
+    background-color:rgb(74, 194, 194);
+}
+#l-nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid whitesmoke;
+    border-radius: 25px;
+    background: linear-gradient(90deg, rgba(201,114,210,1) 7%, rgba(159,98,212,1) 47%, rgba(217,33,216,1) 79%);
+    box-shadow: 0px 13px 50px -1px rgba(0,0,0,0.28);
+}
+.nnewbook{
+    width: 100px;
+    height: 45px;
+    margin-left:5px;
+    border-radius: 15px;
+    border:none;
+    box-shadow: 0px 13px 50px -1px rgba(0,0,0,0.11);
+}
+#bookcont{
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    grid-template-rows: repeat(3,auto);
+    grid-template-areas: "auto auto"
+    "auto auto";
+    width:100%;
+    height: 100%;
+    border: 1px solid whitesmoke;
+    box-shadow: 0px 13px 50px -1px rgba(0,0,0,0.28);
+    border-radius: 25px;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width:100%;
+    border-radius: 25px;
+    height: 100%;
+    margin: 0 auto;
+    border: 1px solid whitesmoke;
+    box-shadow: 0px 13px 50px -1px rgba(0,0,0,0.28);
+    font-size: 20px;
+}

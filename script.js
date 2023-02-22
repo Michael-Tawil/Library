@@ -14,16 +14,18 @@ function Book(title,author,pages,read){
 
 function addBookToLibrary(title,author,pages,read) {
     myLibrary.push(new Book(title,author,pages,read))
-
+    shwbook();
 }
 
 function shwbook(){
+        bookcont.innerHTML = "";
     myLibrary.forEach(book =>{
         let bookbtn = document.createElement("button");
         bookbtn.innerHTML=`${book.read}`;
         bookbtn.classList.add("nnewbook","yesno");
         let bookcard = document.createElement("div");
         bookcard.classList.add("card");
+        bookcard.dataset.index = myLibrary.indexOf(book);
         let bookcardh = document.createElement("h1");
         bookcardh.innerText=`${book.title}`;
         let bookcarddesc = document.createElement("p");
@@ -43,11 +45,20 @@ function shwbook(){
     })
 }
 
+function delbook(e){
+    let i  = e.target.dataset.index;
+    myLibrary.splice(i,1);
+    shwbook();
+}
+function chngread(e){
+    let i = e.target.dataset.index;
+    let Selbook = myLibrary.at(i)
+    Selbook.read === "read" ? Selbook.read = "not read" :Selbook.read="read"
+    shwbook();
+}
 
-theh1ob = addBookToLibrary("The Albion","DR.T",300,"read");
-theh2ob = addBookToLibrary("The Art ","JOHN David",500,"not read");
-theho3b = addBookToLibrary("The Knowing and the Unknown","Steve Jobson",355,"not read");
-theho4b = addBookToLibrary("The Little Big","LIL Iceicle",670,"read");
+addBookToLibrary("The Albion","DR.T",300,"read");
+addBookToLibrary("The maxi","DR.T",300,"read");
 
-shwbook();
 console.log(myLibrary);
+window.addEventListener("click",chngread)

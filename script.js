@@ -1,4 +1,4 @@
- let myLibrary = [];
+let myLibrary = [];
 const bookcont = document.getElementById("bookcont");
 const modal = document.querySelector("#modal");
 const closemodalbtn = document.querySelector("[data-close-button]");
@@ -16,13 +16,10 @@ function Book(title,author,pages,read){
     }
 }
 
+
 function addBookToLibrary(title,author,pages,read) {
     myLibrary.push(new Book(title,author,pages,read))
     shwbook();
-}
-
-function addbookbtn(){
-
 }
 
 function shwbook(){
@@ -62,14 +59,21 @@ function shwbook(){
         shwmodal()
     }
 }
-function getbook (){
+function getbook (event){
+    event.preventDefault();
     let title = document.querySelector("#bookt").value;
     let author  = document.querySelector("#booka").value;
     let pages = document.querySelector("#bookp").value;
     let read = document.querySelector("#bookr").value;
+
+    if([title,author,pages,read].some(el=>el === "")){
+        alert("Please complete the form");
+    }else{
+
     modal.classList.remove("active");
     ovlay.classList.remove("active");
     addBookToLibrary(title,author,pages,read);
+    }
 }
 function delbook(e){
     let i  = e.target.parentNode.dataset.index;
@@ -91,21 +95,23 @@ function handleinput(e){
     }else{}
 }
 function shwmodal(){
+    document.querySelector("form").reset();
     bookcont.innerHTML = "";
     modal.classList.add("active");
     ovlay.classList.add("active");
-    
 }
-addBookToLibrary("m","t",3,"Read")
-addBookToLibrary("m","t",3,"Read")
-addBookToLibrary("m","t",3,"Read")
 
 closemodalbtn.addEventListener('click', ()=>{
     modal.classList.remove("active");
     ovlay.classList.remove("active");
-    
     shwbook();
 })
+
+/*DUMMY DATA*/
+addBookToLibrary("Rich Dad Poor Dad","Robert Kiyosaki","70","Read")
+addBookToLibrary("Accounting For Dummies","Michael Taillard","707","Not Read")
+addBookToLibrary("Influence, New and Expanded: The Psychology of Persuasion","Robert B. Cialdini","608","Not Read")
+/*--------------------*/
 
 nbookbtn.addEventListener('click',shwmodal)
 bookcont.addEventListener("click",handleinput);
